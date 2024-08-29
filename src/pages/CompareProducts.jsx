@@ -116,7 +116,7 @@ function CompareProducts() {
         onOk={toggleModal}
         onCancel={toggleModal}
         footer={null}
-        width={800}
+        width={700}
         style={{ maxHeight: '60vh', overflow: 'hidden' }} 
       >
         <div style={{ maxHeight: '60vh', overflowY: 'hidden' }}> 
