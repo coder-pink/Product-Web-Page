@@ -113,6 +113,7 @@ function CompareProducts() {
             <p><strong>Description:</strong> {product.description}</p>
             <Button
               type="danger"
+              className='bg-red-600 text-white'
               onClick={() => handleRemoveProduct(product.id)}
             >
               Remove
