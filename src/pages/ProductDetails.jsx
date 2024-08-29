@@ -41,6 +41,10 @@ function ProductDetails() {
     { title: 'Name', dataIndex: 'title', key: 'title', width: 150, sorter: (a, b) => a.title.localeCompare(b.title) },
     { title: 'Price', dataIndex: 'price', key: 'price', width: 100, sorter: (a, b) => a.price - b.price },
     { title: 'Description', dataIndex: 'description', key: 'description', width: 200 },
+    { title: 'Discount %', dataIndex: 'discountPercentage', key: 'discountPercentage', width: 100, sorter: (a, b) => a.discountPercentage - b.discountPercentage },
+    { title: 'Brand', dataIndex: 'brand', key: 'brand', width: 150, sorter: (a, b) => a.brand.localeCompare(b.brand) },
+    { title: 'Category', dataIndex: 'category', key: 'category', width: 150, sorter: (a, b) => a.category.localeCompare(b.category) },
+    { title: 'Image', dataIndex: 'image', key: 'image', width: 100, render: (text, record) => <img src={record.thumbnail} alt={record.title} style={{ width: 50 }} /> },
     {
       title: 'Actions',
       key: 'actions',
@@ -61,7 +65,7 @@ function ProductDetails() {
 
   return (
     <>
-      <div className="mt-12 ml-8 p-4" >
+      <div className="mt-12 ml-4 p-4" >
         <h1 className="text-2xl font-bold">Product Details</h1>
 
         <Button

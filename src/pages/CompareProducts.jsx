@@ -65,7 +65,15 @@ function CompareProducts() {
     { title: 'ID', dataIndex: 'id', key: 'id', width: 50 },
     { title: 'Name', dataIndex: 'title', key: 'title', width: 150 },
     { title: 'Price', dataIndex: 'price', key: 'price', width: 100 },
+    { title: 'Discount %', dataIndex: 'discountPercentage', key: 'discountPercentage', width: 100 },
+    { title: 'Brand', dataIndex: 'brand', key: 'brand', width: 150 },
     { title: 'Category', dataIndex: 'category', key: 'category', width: 150 },
+    {
+      title: 'Image', key: 'image', dataIndex: 'thumbnail', width: 100, 
+      render: (text, record) => (
+        <img src={record.thumbnail} alt={record.title} style={{ width: 50 }} />
+      )
+    },
     {
       title: 'Actions',
       key: 'actions',
@@ -83,7 +91,7 @@ function CompareProducts() {
   ];
 
   return (
-    <div className="mt-12 ml-8 p-4 border">
+    <div className="mt-12 ml-8 p-4 ">
       <h1 className="text-2xl font-bold">Compare Products</h1>
       <Button
         type="primary"
@@ -95,9 +103,12 @@ function CompareProducts() {
       </Button>
       <div className="flex flex-wrap">
         {products.map(product => (
-          <div key={product.id} className="w-1/2 p-4 border m-2">
+          <div key={product.id} className="w-2/2 p-4 border m-2">
             <h2 className="text-xl font-bold">{product.title}</h2>
+            <img src={product.thumbnail} alt={product.title} className="w-32 mb-2" />
             <p><strong>Price:</strong> ${product.price}</p>
+            <p><strong>Discount %:</strong> {product.discountPercentage}%</p>
+            <p><strong>Brand:</strong> {product.brand}</p>
             <p><strong>Category:</strong> {product.category}</p>
             <p><strong>Description:</strong> {product.description}</p>
             <Button
@@ -117,15 +128,15 @@ function CompareProducts() {
         onCancel={toggleModal}
         footer={null}
         width={700}
-        style={{ maxHeight: '60vh', overflow: 'hidden' }} 
+        style={{ maxHeight: '70vh', overflowY: 'hidden' }} 
       >
-        <div style={{ maxHeight: '60vh', overflowY: 'hidden' }}> 
+        <div style={{ maxHeight: '60vh', overflowX: 'auto'}}> 
           <Table
             dataSource={allProducts}
             columns={columns}
             rowKey="id"
             pagination={false}
-            scroll={{ y: 400 }}
+            scroll={{ y: 400, x: 'max-content' }} 
             style={{ maxWidth: '100%' }} 
           />
         </div>
